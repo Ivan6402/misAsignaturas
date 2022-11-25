@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Top navbar example · Bootstrap v5.2</title>
+    <title>Registro de usuarios</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-static/">
     <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -19,11 +19,10 @@
     <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
-
-
-    <link href="navbar-top.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="navbar-top.css" rel="stylesheet">
   </head>
   <body>
     
@@ -45,12 +44,6 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
-        <a href="registroUsuario.php" class="btn btn-primary me-2" role="button">Registrarse</a>
-        <input class="form-control me-2" type="text" placeholder="Usuario" name="user" aria-label="user">
-        <input class="form-control me-2" type="text" placeholder="Password" name="clave" aria-label="clave">
-        <button class="btn btn-success" type="submit" name="ingresar">Login</button>
-      </form>
     </div>
   </div>
 </nav>
