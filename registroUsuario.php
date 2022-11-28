@@ -50,9 +50,7 @@
 
 <main class="container">
   <div class="bg-light p-5 rounded">
-    <h1>Sistema de usuarios</h1>
-    <p class="lead">Ingrese usuario para empezar</p>
-    <a class="btn btn-lg btn-primary" href="/docs/5.2/components/navbar/" role="button">Mas informacion ></a>
+    <h1>Crear cuenta</h1>
   </div>
 </main>
 
