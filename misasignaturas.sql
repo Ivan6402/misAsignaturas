@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 20-11-2022 a las 21:31:26
+-- Tiempo de generación: 29-11-2022 a las 15:46:39
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `alumno` (
   `nombre` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sexo` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo` varchar(40) NOT NULL,
   PRIMARY KEY (`idAlumno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -68,10 +69,18 @@ INSERT INTO `asignaturas` (`idasignaturas`, `codigoasignatura`, `nombreasignatur
 
 DROP TABLE IF EXISTS `tipousuario`;
 CREATE TABLE IF NOT EXISTS `tipousuario` (
-  `idTipoAlumno` int(11) NOT NULL AUTO_INCREMENT,
+  `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `tipoUsuario` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`idTipoAlumno`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`idTipoUsuario`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipousuario`
+--
+
+INSERT INTO `tipousuario` (`idTipoUsuario`, `tipoUsuario`) VALUES
+(1, 'Administrador'),
+(2, 'UsuarioA');
 
 -- --------------------------------------------------------
 

@@ -13,14 +13,25 @@
 
   <div class="form-row">
     <div class="form-group col-md-6">
+   <label for="tipoUsuario">Tipo de usuario:</label>
+      <select class="form-control" id="tipoUsuario" name="tipoUsuario">
+        <?php while($fila = $resultado->fetch_assoc()): ?>
+          <option value="<?php echo $fila['idTipoUsuario']?>"><?php echo $fila['tipoUsuario']?></option>
+        <?php endwhile; ?>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
       <label for="inputTelefono">Telefono:</label>
       <input type="tel" class="form-control" id="inputTelefono" placeholder="Numero de telefono" name="telefono">
    </div>
     <div class="form-group col-md-6">
-     <label for="exampleFormControlSelect1">Sexo:</label>
+     <label for="sexo">Sexo:</label>
         <select class="form-control" id="sexo" name="sexo">
           <option>Seleccione una opcion</option>
-          <option>Masculino</option>
+          <option>Masculina</option>
           <option>Femenino</option>
         </select>
     </div>
@@ -35,6 +46,7 @@
       <label for="inputPassword4">Password</label>
       <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="clave">
     </div>
+  <br>
   <button type="submit" class="btn btn-primary" name="registrar">Registrar</button>
 
 </form>
