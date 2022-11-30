@@ -2,12 +2,12 @@
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputNombre">Nombre del Alumno</label>
+      <label for="inputNombre">Nombre del Alumno:</label>
       <input type="text" class="form-control" id="inputNombre" placeholder="nombreCompleto" name="nombreAlumno">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputUsuario">Usuario</label>
-      <input type="password" class="form-control" id="inputUsuario" placeholder="nombreUsuario" name="usuario" >
+      <label for="inputUsuario">Usuario:</label>
+      <input type="text" class="form-control" id="inputUsuario" placeholder="nombreUsuario" name="usuario" >
     </div>
   </div>
 
@@ -31,7 +31,7 @@
      <label for="sexo">Sexo:</label>
         <select class="form-control" id="sexo" name="sexo">
           <option>Seleccione una opcion</option>
-          <option>Masculina</option>
+          <option>Masculino</option>
           <option>Femenino</option>
         </select>
     </div>

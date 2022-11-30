@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 29-11-2022 a las 15:46:39
+-- Tiempo de generación: 30-11-2022 a las 22:35:24
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -91,13 +91,20 @@ INSERT INTO `tipousuario` (`idTipoUsuario`, `tipoUsuario`) VALUES
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `apellido` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `clave` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(40) DEFAULT NULL,
+  `clave` text,
   `idAlumno` int(11) NOT NULL,
   `idTipoUsuario` int(11) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `nombre`, `clave`, `idAlumno`, `idTipoUsuario`) VALUES
+(1, 'f', '6ac65fdba11753e16d83cfe949cef2462a718cfd', 0, 1),
+(2, 'ivan640', '6ac65fdba11753e16d83cfe949cef2462a718cfd', 0, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
