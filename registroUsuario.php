@@ -3,7 +3,6 @@ include_once("conexion/conexion.php");
 $sql = "SELECT idTipoUsuario, tipoUsuario FROM tipousuario";
 $resultado = $conexion->query($sql);
 
-
 if (!empty($_POST)) {
   $nombre = mysqli_real_escape_string($conexion, $_POST['nombreAlumno']);
   $usuario = mysqli_real_escape_string($conexion, $_POST['usuario']);
@@ -23,20 +22,15 @@ if (!empty($_POST)) {
       window.location='registroUsuario.php';
       </script>";
   } else {
-    echo $nombre, $tel, $sexo, $correo;
     $sqlAlumno = "INSERT INTO `alumno`( `nombre`, `telefono`, `sexo`, `correo`) 
       VALUES('$nombre', '$tel', '$sexo', '$correo')";
-    echo $sqlAlumno;
-    exit();
     $resultadoAlumno = $conexion->query($sqlAlumno);
     
     if ($resultadoAlumno > 0) {
       echo "<script> alert('Registro de Alumno Exitoso');
         </script>";
-      exit();
     } else {
       echo mysqli_error($conexion);
-      exit();
     }
 
     $idAlumno = $conexion->insert_id;
@@ -50,10 +44,9 @@ if (!empty($_POST)) {
         window.location='index.php';
         </script>";
     } else {
-      echo mysqli_error($conexion);
-     /* echo "<script> alert('Error al registrar Usuario'); */
-     /*    window.location='registroUsuario.php'; */
-     /*    </script>"; */
+      echo "<script> alert('Error al registrar Usuario');
+        window.location='registroUsuario.php';
+        </script>";
     }
 
   }
@@ -85,9 +78,8 @@ if (!empty($_POST)) {
       </div>
     </main>
 
-
     <script src="js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-      
+
   </body>
 </html>

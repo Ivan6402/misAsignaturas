@@ -1,3 +1,32 @@
+<?php
+include_once("conexion/conexion.php");
+session_start();
+if (isset($_SESSION['idUsuario'])) {
+  header("Location: admin.php");
+}
+
+if (!empty($_POST)) {
+  # Valido el ingreso del usuario
+  $usuario = mysqli_real_escape_string($conexion, $_POST['usuario']);
+  $clave = mysqli_real_escape_string($conexion, $_POST['clave']);
+  $clave_encriptada = sha1($clave);
+  $sql = "SELECT idUsuario, idTipoUsuario FROM usuarios 
+    WHERE nombre = '$usuario' AND clave = '$clave_encriptada'";
+  $resultado = $conexion->query($sql);
+  $filas = $resultado->num_rows;
+  if ($filas>0) {
+    $fila = $resultado->fetch_assoc();
+    $_SESSION['idUsuario'] = $fila['idUsuario'];
+    $_SESSION['tipoUsuario'] = $fila['tipoUsuario'];
+    header("Location: admin.php");
+  }else{
+    echo "<script> alert('El usuario o contraseña son incorrectos');
+      window.location='index.php';
+      </script>";
+  }
+}
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +41,7 @@
       
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <div class="container-fluid">
-      <?php require_once 'menuSuperior.php';?>
+      <?php require_once 'menuIndex.php';?>
       </div>
     </nav>
 
