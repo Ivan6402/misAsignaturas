@@ -1,5 +1,30 @@
 <?php 
 include_once 'conexion/conexion.php';
+session_start();
+// mostrar informacion de usuario logeado
+if (isset($_SESSION['idUsuario'])) {
+  $idUsuario = $_SESSION['idUsuario'];
+}else{
+  echo "<script>
+    alert('No ha iniciado sesion');
+    window.location = 'index.php';
+    </script>";
+}
+
+
+
+$sql = "SELECT u.idUsuario, a.nombre FROM usuarios as u INNER JOIN alumno AS a ON u.idAlumno = a.idAlumno
+  WHERE u.idUsuario = '$idUsuario'";
+$resultado = $conexion->query($sql);
+
+$fila = $resultado->fetch_assoc();
+
+if ($fila == 0) {
+  echo "<script>Alert('Error al buscar usuario')</script>";
+  echo mysqli_error($conexion);
+  die();
+}
+
 if(!empty($_POST)){
   $codigo = mysqli_real_escape_string($conexion, $_POST['cod']);
   $asignatura = mysqli_real_escape_string($conexion, $_POST['nom']);
@@ -51,7 +76,6 @@ $resultadoMaterias = $conexion->query($materias);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Administracion</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="navbar-top.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
