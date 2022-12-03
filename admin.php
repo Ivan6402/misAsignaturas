@@ -1,7 +1,7 @@
 <?php 
 include_once 'conexion/conexion.php';
 session_start();
-// mostrar informacion de usuario logeado
+// Comprobar si el usuario se a logeado
 if (isset($_SESSION['idUsuario'])) {
   $idUsuario = $_SESSION['idUsuario'];
 }else{
@@ -10,7 +10,6 @@ if (isset($_SESSION['idUsuario'])) {
     window.location = 'index.php';
     </script>";
 }
-
 
 
 $sql = "SELECT u.idUsuario, a.nombre FROM usuarios as u INNER JOIN alumno AS a ON u.idAlumno = a.idAlumno
@@ -32,8 +31,8 @@ if(!empty($_POST)){
   $verMaterias = "SELECT idasignaturas, codigoasignatura,
                   nombreasignatura, nota
                  FROM asignaturas
-                 WHERE codigoasignaturas = '$codigo' OR
-                        nombreasignatura = '$asignatura'";
+                 WHERE codigoasignaturas = '$codigo' AND
+                        idAlumno = '$idUsuario'";
   $existeMateria = $conexion->query($verMaterias);
   $filas = $existeMateria->num_rows;
   if ($filas > 0) {
@@ -43,8 +42,8 @@ if(!empty($_POST)){
       </script>";
   }else{
     $sqlmateria = "INSERT INTO asignaturas(
-      codigoasignatura, nombreasignatura,nota)
-      VALUES('$codigo', '$asignatura', '$nota')";
+      codigoasignatura, nombreasignatura,nota, idAlumno)
+      VALUES('$codigo', '$asignatura', '$nota', '$idUsuario')";
     $resultadoMateria = $conexion->query($sqlmateria);
     if ($resultadoMateria>0) {
       echo "<script>
@@ -62,9 +61,10 @@ if(!empty($_POST)){
 }
 
 
-$materias = "SELECT idasignaturas, codigoasignatura,
-                  nombreasignatura, nota
-                 FROM asignaturas";
+$materias = "SELECT u.idUsuario, m.idasignaturas, m.codigoasignatura,
+                  m.nombreasignatura, m.nota
+                 FROM usuarios AS u INNER JOIN asignaturas AS m ON u.idUsuario = m.idAlumno
+                WHERE u.idUsuario = $idUsuario";
 
 $resultadoMaterias = $conexion->query($materias);
 
@@ -87,6 +87,12 @@ $resultadoMaterias = $conexion->query($materias);
     </nav>
 
     <main class="container">
+
+<?php echo "ID de usuario: ", $_SESSION['idUsuario']; 
+      echo "<br>";
+      $tipo = $_SESSION['tipoUsuario'] == 1 ? 'admin' : 'alumno';
+      echo "Tipo de usuario: ", $tipo; 
+?>
 
       <h3 align = "center">Registro de Asignaturas</h3>
       <form action="<?php $_SERVER["PHP_SELF"]?>" method="POST">

@@ -12,6 +12,11 @@
     <li class="nav-item">
     <a class="nav-link active" href="#"><?php echo utf8_decode($fila['nombre']); ?></a>
     </li>
+    <?php if($_SESSION['tipoUsuario'] == 1): ?>
+      <li class="nav-item">
+        <a class="nav-link" href="listaUsuarios.php">Lista de Usuarios</a>
+      </li>
+    <?php endif ?>
     <li class="nav-item">
       <a class="nav-link" href="cerrarSesion.php">Cerrar session</a>
     </li>

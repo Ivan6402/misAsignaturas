@@ -67,7 +67,7 @@ if (!empty($_POST)) {
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <div class="container-fluid">
-      <?php require_once 'menuSuperior.php';?>
+      <?php require_once 'menuIndex.php';?>
       </div>
     </nav>
 

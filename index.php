@@ -17,7 +17,7 @@ if (!empty($_POST)) {
   if ($filas>0) {
     $fila = $resultado->fetch_assoc();
     $_SESSION['idUsuario'] = $fila['idUsuario'];
-    $_SESSION['tipoUsuario'] = $fila['tipoUsuario'];
+    $_SESSION['tipoUsuario'] = $fila['idTipoUsuario'];
     header("Location: admin.php");
   }else{
     echo "<script> alert('El usuario o contraseña son incorrectos');
