@@ -31,7 +31,7 @@ if(!empty($_POST)){
   $verMaterias = "SELECT idasignaturas, codigoasignatura,
                   nombreasignatura, nota
                  FROM asignaturas
-                 WHERE codigoasignaturas = '$codigo' AND
+                 WHERE codigoasignatura = '$codigo' AND
                         idAlumno = '$idUsuario'";
   $existeMateria = $conexion->query($verMaterias);
   $filas = $existeMateria->num_rows;
