@@ -10,7 +10,10 @@
       <a class="nav-link" aria-current="page" href="index.php">Home</a>
     </li>
     <li class="nav-item">
-    <a class="nav-link active" href="#"><?php echo utf8_decode($fila['nombre']); ?></a>
+    <a class="nav-link active" href="perfil.php"><?php echo utf8_decode($fila['nombre']); ?></a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="perfil.php">Perfil</a>
     </li>
     <?php if($_SESSION['tipoUsuario'] == 1): ?>
       <li class="nav-item">
